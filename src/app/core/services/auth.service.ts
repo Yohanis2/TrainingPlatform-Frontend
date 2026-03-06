@@ -55,8 +55,16 @@ export class AuthService {
     return this.tokenSubject.value;
   }
 
+  get user(): User | null {
+    return this.userSubject.value;
+  }
+
   isAuthenticated(): boolean {
     return Boolean(this.tokenSubject.value);
+  }
+
+  hasRole(role: User['role']): boolean {
+    return this.userSubject.value?.role === role;
   }
 
   private persistSession(response: AuthResponse): void {

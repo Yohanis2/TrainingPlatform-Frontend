@@ -1,24 +1,28 @@
-<nz-layout class="app-shell">
+<nz-layout
+  class="app-shell"
+  [class.mobile-open]="isMobile() && !collapsed()"
+  [class.sider-collapsed]="collapsed()"
+  [class.sider-open]="!collapsed()"
+>
   <nz-sider
-    nzCollapsible
-    [nzTrigger]="null"
-    nzBreakpoint="lg"
-    [nzCollapsed]="collapsed()"
-    [nzCollapsedWidth]="isMobile() ? 0 : 80"
-    (nzCollapsedChange)="onSiderCollapsedChange($event)"
-    (nzBreakpoint)="onSiderBreakpoint($event)"
+    [style.width.px]="siderWidth()"
+    [style.minWidth.px]="siderWidth()"
+    [style.maxWidth.px]="siderWidth()"
+    [style.flex]="siderWidth() === 0 ? '0 0 0' : '0 0 ' + siderWidth() + 'px'"
     nzWidth="260"
     nzTheme="light"
   >
     <div class="brand">
       <div class="brand-mark">TPC</div>
-      <div class="brand-copy" *ngIf="!collapsed()">
-        <span class="brand-title">Training Platform</span>
-        <span class="brand-subtitle">Connections, growth, and trust.</span>
-      </div>
+      @if (!collapsed()) {
+        <div class="brand-copy">
+          <span class="brand-title">Training Platform</span>
+          <span class="brand-subtitle">Connections, growth, and trust.</span>
+        </div>
+      }
     </div>
 
-    <ul nz-menu nzMode="inline" nzTheme="light" [nzInlineCollapsed]="collapsed()">
+    <ul nz-menu nzMode="inline" nzTheme="light" [nzInlineCollapsed]="menuInlineCollapsed()">
       <li nz-menu-item routerLink="/dashboard" routerLinkActive="active" (click)="onMenuItemClick()">
         <span nz-icon nzType="appstore"></span>
         <span>Overview</span>
@@ -45,6 +49,14 @@
       </li>
     </ul>
   </nz-sider>
+  @if (isMobile() && !collapsed()) {
+    <button
+      type="button"
+      class="mobile-backdrop"
+      aria-label="Close navigation"
+      (click)="closeSidebar()"
+    ></button>
+  }
 
   <nz-layout>
     <nz-header class="app-header">
@@ -68,7 +80,9 @@
         <div nz-dropdown [nzDropdownMenu]="userMenu" nzPlacement="bottomRight">
           <button nz-button nzType="text" class="user-button">
             <nz-avatar nzIcon="user"></nz-avatar>
-            <span class="user-name" *ngIf="user$ | async as user">{{ user.name }}</span>
+            @if (user$ | async; as user) {
+              <span class="user-name">{{ user.name }}</span>
+            }
             <span nz-icon nzType="down"></span>
           </button>
         </div>
@@ -86,5 +100,10 @@
     <nz-content class="app-content">
       <router-outlet></router-outlet>
     </nz-content>
+
+    <!-- Footer -->
+    <nz-footer class="app-footer" style="text-align: center;">
+      John. © {{ currentYear }}
+    </nz-footer>
   </nz-layout>
 </nz-layout>

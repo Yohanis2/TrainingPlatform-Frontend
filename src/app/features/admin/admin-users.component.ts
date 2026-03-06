@@ -1,5 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { AsyncPipe, NgFor } from '@angular/common';
+import { catchError, of } from 'rxjs';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
 import { NzSelectModule } from 'ng-zorro-antd/select';
@@ -21,7 +22,7 @@ export class AdminUsersComponent {
   private readonly adminService = inject(AdminService);
   private readonly message = inject(NzMessageService);
 
-  protected users$ = this.adminService.getUsers();
+  protected users$ = this.loadUsers();
   protected readonly updating = signal<number | null>(null);
 
   readonly roles: Role[] = ['ROLE_ADMIN', 'ROLE_TRAINER', 'ROLE_USER'];
@@ -31,7 +32,7 @@ export class AdminUsersComponent {
     this.adminService.updateRole(user.id, role).subscribe({
       next: () => {
         this.updating.set(null);
-        this.users$ = this.adminService.getUsers();
+        this.users$ = this.loadUsers();
         this.message.success('Role updated.');
       },
       error: (err) => {
@@ -43,5 +44,14 @@ export class AdminUsersComponent {
 
   trackUser(_: number, user: User): number {
     return user.id;
+  }
+
+  private loadUsers() {
+    return this.adminService.getUsers().pipe(
+      catchError((err) => {
+        this.message.error(err?.error?.message ?? 'Unable to load users.');
+        return of([] as User[]);
+      })
+    );
   }
 }

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+import { adminGuard } from './core/guards/admin.guard';
 import { authGuard } from './core/guards/auth.guard';
 import { AdminUsersComponent } from './features/admin/admin-users.component';
 import { ConnectionsComponent } from './features/connections/connections.component';
@@ -41,7 +42,7 @@ export const routes: Routes = [
       { path: 'connections', component: ConnectionsComponent },
       { path: 'messages', component: MessagesComponent },
       { path: 'notifications', component: NotificationsComponent },
-      { path: 'admin/users', component: AdminUsersComponent },
+      { path: 'admin/users', component: AdminUsersComponent, canActivate: [adminGuard] },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
     ]
   },

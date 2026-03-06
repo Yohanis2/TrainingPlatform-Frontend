@@ -1,6 +1,6 @@
 import { Component, HostListener, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -20,7 +20,6 @@ import { Notification } from '../core/types/models';
   imports: [
     RouterModule,
     AsyncPipe,
-    NgIf,
     NzAvatarModule,
     NzBadgeModule,
     NzButtonModule,
@@ -41,6 +40,7 @@ export class AppShellComponent {
 
   protected readonly collapsed = signal(false);
   protected readonly isMobile = signal(false);
+  protected readonly currentYear = new Date().getFullYear();
   protected readonly user$ = this.auth.user$;
   protected unreadCount = signal(0);
 
@@ -63,21 +63,32 @@ export class AppShellComponent {
   }
 
   toggleCollapsed(): void {
-    this.collapsed.update((value) => !value);
+    if (this.collapsed()) {
+      this.collapsed.set(false);
+      return;
+    }
+
+    this.collapsed.set(true);
   }
 
-  onSiderCollapsedChange(value: boolean): void {
-    this.collapsed.set(value);
+  closeSidebar(): void {
+    this.collapsed.set(true);
   }
 
-  onSiderBreakpoint(event: boolean | Event): void {
-    const isBelowBreakpoint =
-      typeof event === 'boolean'
-        ? event
-        : (event as MediaQueryListEvent).matches ?? false;
+  isAdmin(): boolean {
+    return this.auth.hasRole('ROLE_ADMIN');
+  }
 
-    this.isMobile.set(isBelowBreakpoint);
-    this.collapsed.set(isBelowBreakpoint);
+  siderWidth(): number {
+    if (this.isMobile()) {
+      return this.collapsed() ? 0 : 260;
+    }
+
+    return this.collapsed() ? 80 : 260;
+  }
+
+  menuInlineCollapsed(): boolean {
+    return !this.isMobile() && this.collapsed();
   }
 
   onMenuItemClick(): void {
@@ -96,7 +107,16 @@ export class AppShellComponent {
     }
 
     const mobile = window.innerWidth < 992;
+    const mobileChanged = mobile !== this.isMobile();
+
     this.isMobile.set(mobile);
-    this.collapsed.set(mobile);
+
+    if (mobileChanged && mobile) {
+      this.collapsed.set(mobile);
+    }
+
+    if (mobileChanged && !mobile) {
+      this.collapsed.set(false);
+    }
   }
 }

@@ -4,20 +4,18 @@ import { CanActivateFn, Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 
-export const authGuard: CanActivateFn = () => {
+export const adminGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   const router = inject(Router);
   const platformId = inject(PLATFORM_ID);
 
-  // During SSR/prerender there is no localStorage.
-  // Defer auth enforcement to browser to avoid refresh redirect loops.
   if (!isPlatformBrowser(platformId)) {
     return true;
   }
 
-  if (auth.isAuthenticated()) {
+  if (auth.isAuthenticated() && auth.hasRole('ROLE_ADMIN')) {
     return true;
   }
 
-  return router.parseUrl('/auth/login');
+  return router.parseUrl('/dashboard');
 };
