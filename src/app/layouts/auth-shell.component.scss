@@ -1,0 +1,44 @@
+.auth-shell {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 10%, rgba(234, 179, 8, 0.14), transparent 34%),
+    radial-gradient(circle at 86% 18%, rgba(20, 184, 166, 0.14), transparent 32%),
+    linear-gradient(135deg, #f7fbff 0%, #eef6ff 48%, #ecfdf5 100%);
+}
+
+.auth-panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+}
+
+.auth-panel::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(255, 255, 255, 0.52);
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+}
+
+.auth-center {
+  width: min(460px, 100%);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 640px) {
+  .auth-panel {
+    padding: 14px;
+  }
+
+  .auth-panel::before {
+    inset: 10px;
+    border-radius: 18px;
+  }
+}

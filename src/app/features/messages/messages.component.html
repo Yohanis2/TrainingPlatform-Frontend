@@ -1,0 +1,32 @@
+<nz-page-header
+  class="page-header"
+  nzTitle="Messages"
+  nzSubtitle="Direct, secure conversations between users."
+></nz-page-header>
+
+<nz-card nzBordered="false" class="message-card">
+  <form nz-form [formGroup]="form" class="message-form" (ngSubmit)="sendMessage()">
+    <nz-form-item>
+      <nz-form-control>
+        <nz-input-number formControlName="userId" nzPlaceHolder="Recipient user ID"></nz-input-number>
+      </nz-form-control>
+    </nz-form-item>
+    <nz-form-item class="message-input">
+      <nz-form-control>
+        <input nz-input formControlName="content" placeholder="Write a message" />
+      </nz-form-control>
+    </nz-form-item>
+    <button nz-button nzType="primary" type="submit">Send</button>
+    <button nz-button nzType="default" type="button" (click)="loadConversation()">Refresh</button>
+  </form>
+
+  <div class="message-list" *ngIf="conversation$() as conversation">
+    <div class="message" *ngFor="let item of conversation; trackBy: trackMessage">
+      <div class="message-meta">
+        <strong>{{ item.sender.name }}</strong>
+        <span>{{ item.sentAt | date: 'short' }}</span>
+      </div>
+      <p>{{ item.content }}</p>
+    </div>
+  </div>
+</nz-card>

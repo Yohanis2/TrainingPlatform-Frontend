@@ -1,0 +1,19 @@
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+.admin-table {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: var(--shadow-soft);
+}

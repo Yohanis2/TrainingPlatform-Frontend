@@ -1,0 +1,61 @@
+<ng-container *ngIf="training$ | async as training">
+  <section class="detail-header">
+    <div>
+      <span class="category">{{ training.category?.name || 'General' }}</span>
+      <h1>{{ training.title }}</h1>
+      <p>{{ training.description }}</p>
+      <nz-tag [nzColor]="training.status === 'OPEN' ? 'green' : 'orange'">{{ training.status }}</nz-tag>
+    </div>
+    <div class="actions">
+      <button nz-button nzType="primary" [nzLoading]="loading()" (click)="enroll(training.id)">
+        Enroll
+      </button>
+      <button nz-button nzType="default" [nzLoading]="loading()" (click)="unenroll(training.id)">
+        Unenroll
+      </button>
+    </div>
+  </section>
+
+  <nz-card nzBordered="false" class="detail-card">
+    <nz-descriptions [nzColumn]="2" nzBordered>
+      <nz-descriptions-item nzTitle="Trainer">{{ training.trainer.name }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Level">{{ training.level }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Capacity">
+        {{ training.enrolledCount }}/{{ training.capacity }}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Price">${{ training.price }}</nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Schedule">
+        {{ training.startDate || 'TBD' }} - {{ training.endDate || 'TBD' }}
+      </nz-descriptions-item>
+      <nz-descriptions-item nzTitle="Status">{{ training.status }}</nz-descriptions-item>
+    </nz-descriptions>
+  </nz-card>
+
+  <nz-card nzBordered="false" class="detail-card">
+    <h3>Leave a review</h3>
+    <form nz-form [formGroup]="reviewForm" (ngSubmit)="submitReview(training.id)">
+      <nz-form-item>
+        <nz-form-control>
+          <nz-rate formControlName="rating"></nz-rate>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control>
+          <textarea nz-input rows="3" formControlName="comment" placeholder="Share your experience"></textarea>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button nzType="primary" type="submit">Submit review</button>
+    </form>
+  </nz-card>
+
+  <nz-card nzBordered="false" class="detail-card">
+    <h3>Reviews</h3>
+    <div class="review" *ngFor="let review of reviews$ | async">
+      <div class="review-header">
+        <strong>{{ review.user.name }}</strong>
+        <nz-rate [ngModel]="review.rating" nzDisabled></nz-rate>
+      </div>
+      <p>{{ review.comment || 'No comment added.' }}</p>
+    </div>
+  </nz-card>
+</ng-container>

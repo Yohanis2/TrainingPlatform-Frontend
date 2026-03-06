@@ -1,0 +1,123 @@
+.app-shell {
+  min-height: 100vh;
+  background: var(--surface);
+}
+
+:host ::ng-deep .ant-layout-sider {
+  border-right: 1px solid rgba(14, 27, 45, 0.08);
+  box-shadow: 8px 0 26px rgba(15, 23, 42, 0.04);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid rgba(14, 27, 45, 0.08);
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  background: linear-gradient(135deg, #0f766e, #f97316);
+  box-shadow: 0 10px 24px rgba(15, 118, 110, 0.25);
+}
+
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-title {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  color: var(--muted-text);
+}
+
+.app-header {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-toggle {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+}
+
+.user-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.app-content {
+  padding: 24px 28px 40px;
+}
+
+.active {
+  font-weight: 600;
+}
+
+:host ::ng-deep .ant-menu-inline .ant-menu-item-selected {
+  background: rgba(15, 118, 110, 0.12);
+  color: #0f766e;
+  border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+  :host ::ng-deep .ant-layout-sider {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    height: 100vh;
+  }
+
+  .app-header {
+    padding: 12px 16px;
+  }
+
+  .app-content {
+    padding: 16px;
+  }
+
+  .user-name {
+    display: none;
+  }
+}

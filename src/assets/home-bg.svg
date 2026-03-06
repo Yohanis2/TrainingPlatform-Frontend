@@ -1,0 +1,41 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <ellipse cx="220" cy="170" rx="260" ry="180" fill="#FDE68A" fill-opacity="0.35"/>
+  <ellipse cx="1410" cy="180" rx="230" ry="160" fill="#99F6E4" fill-opacity="0.42"/>
+  <ellipse cx="800" cy="940" rx="520" ry="220" fill="#BFDBFE" fill-opacity="0.22"/>
+
+  <g opacity="0.55">
+    <rect x="170" y="210" width="520" height="280" rx="24" fill="#FFFFFF"/>
+    <rect x="204" y="248" width="454" height="20" rx="10" fill="#CFFAFE"/>
+    <rect x="204" y="286" width="240" height="14" rx="7" fill="#E2E8F0"/>
+    <rect x="204" y="312" width="200" height="14" rx="7" fill="#E2E8F0"/>
+    <path d="M230 430L312 368L410 412L498 350L612 410" stroke="#14B8A6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="230" cy="430" r="11" fill="#0F766E"/>
+    <circle cx="312" cy="368" r="11" fill="#0F766E"/>
+    <circle cx="410" cy="412" r="11" fill="#0F766E"/>
+    <circle cx="498" cy="350" r="11" fill="#0F766E"/>
+    <circle cx="612" cy="410" r="11" fill="#0F766E"/>
+  </g>
+
+  <g opacity="0.48">
+    <rect x="910" y="170" width="520" height="580" rx="28" fill="#FFFFFF"/>
+    <rect x="958" y="230" width="430" height="260" rx="24" fill="#ECFEFF"/>
+    <circle cx="1048" cy="330" r="20" fill="#0EA5E9"/>
+    <circle cx="1188" cy="420" r="20" fill="#0EA5E9"/>
+    <circle cx="1298" cy="302" r="20" fill="#0EA5E9"/>
+    <path d="M1048 330L1188 420L1298 302" stroke="#0284C7" stroke-width="7" stroke-linecap="round"/>
+    <rect x="958" y="525" width="430" height="168" rx="20" fill="#F8FAFC"/>
+    <circle cx="1038" cy="600" r="34" fill="#0F766E"/>
+    <rect x="1096" y="578" width="250" height="16" rx="8" fill="#94A3B8"/>
+    <rect x="1096" y="606" width="210" height="16" rx="8" fill="#CBD5E1"/>
+    <rect x="1096" y="634" width="160" height="16" rx="8" fill="#CBD5E1"/>
+  </g>
+
+  <defs>
+    <linearGradient id="bg" x1="40" y1="30" x2="1600" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset="0.5" stop-color="#F0F9FF"/>
+      <stop offset="1" stop-color="#ECFDF5"/>
+    </linearGradient>
+  </defs>
+</svg>

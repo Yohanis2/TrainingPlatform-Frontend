@@ -1,0 +1,37 @@
+<nz-card class="auth-card" [nzBordered]="false">
+  <div class="card-header">
+    <span class="brand-pill"><span nz-icon nzType="team"></span> Create Profile</span>
+    <h2>Create your account</h2>
+    <p>Join the network with a secure JWT identity.</p>
+  </div>
+
+  <form nz-form [formGroup]="form" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24">Name</nz-form-label>
+      <nz-form-control [nzSpan]="24" nzErrorTip="Enter your name">
+        <input nz-input formControlName="name" placeholder="Alex Morgan" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24">Email</nz-form-label>
+      <nz-form-control [nzSpan]="24" nzErrorTip="Enter a valid email">
+        <input nz-input formControlName="email" placeholder="you@training.com" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24">Password</nz-form-label>
+      <nz-form-control [nzSpan]="24" nzErrorTip="Minimum 6 characters">
+        <input nz-input type="password" formControlName="password" placeholder="Create a password" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzType="primary" nzBlock [nzLoading]="loading()">Create account</button>
+  </form>
+
+  <div class="card-footer">
+    <span>Already have access?</span>
+    <a routerLink="/auth/login">Sign in</a>
+  </div>
+</nz-card>

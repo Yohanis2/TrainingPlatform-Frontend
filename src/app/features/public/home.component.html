@@ -1,0 +1,405 @@
+<div class="home-page" id="home">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="topbar" [class.scrolled]="isScrolled">
+
+    <!-- Brand -->
+    <a class="brand" role="button" tabindex="0" (click)="scrollTo('home')">
+      <span class="brand-mark">TPC</span>
+      <span class="brand-text">Training &amp; Teacher Connection</span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="links" aria-label="Primary navigation">
+      <button nz-button nzType="text" type="button"
+              [class.active]="activeSection === 'home'"
+              (click)="scrollTo('home')">Home</button>
+
+      <button nz-button nzType="text" type="button"
+              [class.active]="activeSection === 'about'"
+              (click)="scrollTo('about')">About</button>
+
+      <button nz-button nzType="text" type="button"
+              [class.active]="activeSection === 'service'"
+              (click)="scrollTo('service')">Services</button>
+
+      <button nz-button nzType="text" type="button"
+              [class.active]="activeSection === 'contact'"
+              (click)="scrollTo('contact')">Contact</button>
+    </nav>
+
+    <!-- Auth Buttons -->
+    <div class="auth-actions">
+      <a nz-button nzType="default" routerLink="/auth/login">Login</a>
+      <a nz-button nzType="primary" class="rounded" routerLink="/auth/register">
+        Signup
+      </a>
+    </div>
+
+  </header>
+
+  <!-- ================= HERO SECTION ================= -->
+  <nz-card class="hero" [nzBordered]="false">
+    <div class="hero-copy">
+      <span class="badge">Door-to-Door Training Platform</span>
+
+      <h1>Learn Faster With Verified Trainers Near You</h1>
+
+      <p>
+        Discover trusted trainers, compare expertise, and book sessions online
+        or in-person with secure communication.
+      </p>
+
+      <div class="cta">
+        <a nz-button nzType="primary" routerLink="/auth/register">
+          Get Started
+        </a>
+
+        <a nz-button nzType="default" routerLink="/auth/login">
+          Sign In
+        </a>
+      </div>
+
+      <ul class="hero-points">
+        <li>
+          <span nz-icon nzType="team"></span>
+          Verified Trainer Profiles
+        </li>
+        <li>
+          <span nz-icon nzType="calendar"></span>
+          Flexible Scheduling
+        </li>
+        <li>
+          <span nz-icon nzType="message"></span>
+          Direct Chat Support
+        </li>
+      </ul>
+    </div>
+
+    <div class="hero-visual">
+      <img ngSrc="assets/home.jpg"
+           width="525"
+           height="350"
+           priority
+           decoding="async"
+           alt="Training session" />
+    </div>
+  </nz-card>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="icon-grid">
+
+    <nz-card class="icon-card" [nzBordered]="false">
+      <span class="icon-circle">
+        <span nz-icon nzType="appstore"></span>
+      </span>
+      <h3>Smart Discovery</h3>
+      <p>Search by topic, level, and location easily.</p>
+    </nz-card>
+
+    <nz-card class="icon-card" [nzBordered]="false">
+      <span class="icon-circle">
+        <span nz-icon nzType="team"></span>
+      </span>
+      <h3>Trainer Matching</h3>
+      <p>Find trainers that match your goals and schedule.</p>
+    </nz-card>
+
+    <nz-card class="icon-card" [nzBordered]="false">
+      <span class="icon-circle">
+        <span nz-icon nzType="message"></span>
+      </span>
+      <h3>Fast Communication</h3>
+      <p>Chat instantly and confirm session details quickly.</p>
+    </nz-card>
+
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="gallery-grid">
+    <img ngSrc="assets/education.jpeg" width="297" height="170" decoding="async" alt="Education">
+    <img ngSrc="assets/skill.jpg" width="800" height="534" decoding="async" alt="Skills">
+    <img ngSrc="assets/service.jpg" width="1300" height="1093" decoding="async" alt="Service">
+    <img ngSrc="assets/child.jpeg" width="268" height="188" decoding="async" alt="Child Training">
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <nz-card id="about" class="detail-panel about-section" [nzBordered]="false">
+
+    <div nz-row [nzGutter]="32" nzAlign="middle">
+
+      <!-- LEFT CONTENT -->
+      <div nz-col nzXs="24" nzMd="14">
+
+        <h2>About Training &amp; Teacher Connection</h2>
+
+        <p>
+          Training &amp; Teacher Connection (TPC) is a smart platform designed to
+          bridge the gap between learners and professional trainers.
+          Our goal is to make quality education accessible, flexible,
+          and location-friendly.
+        </p>
+
+        <p>
+          Whether you are looking for academic tutoring, professional skills,
+          technical training, or child-focused coaching, our platform helps
+          you discover verified trainers near you.
+        </p>
+
+        <nz-divider></nz-divider>
+
+        <div nz-row [nzGutter]="16">
+
+          <div nz-col nzXs="24" nzSm="12">
+            <h3>Our Mission</h3>
+            <p>
+              To simplify access to quality training by connecting learners
+              with trusted and verified instructors in their local area.
+            </p>
+          </div>
+
+          <div nz-col nzXs="24" nzSm="12">
+            <h3>Our Vision</h3>
+            <p>
+              To become the leading door-to-door training and education
+              connection platform in Ethiopia and beyond.
+            </p>
+          </div>
+
+        </div>
+
+        <nz-divider></nz-divider>
+
+        <h3>Why Choose Us?</h3>
+
+        <ul class="about-list">
+          <li><span nz-icon nzType="check-circle"></span> Verified professional trainers</li>
+          <li><span nz-icon nzType="check-circle"></span> Flexible online and on-site sessions</li>
+          <li><span nz-icon nzType="check-circle"></span> Secure communication system</li>
+          <li><span nz-icon nzType="check-circle"></span> Transparent ratings and reviews</li>
+        </ul>
+
+      </div>
+
+      <!-- RIGHT IMAGE -->
+      <div nz-col nzXs="24" nzMd="10" class="about-image">
+        <img ngSrc="assets/about2.png"
+             width="1000"
+             height="500"
+             decoding="async"
+             alt="About Training Platform">
+      </div>
+
+    </div>
+
+    <!-- ================= STATS SECTION ================= -->
+    <nz-divider></nz-divider>
+
+    <div nz-row [nzGutter]="24" class="about-stats">
+
+      <div nz-col nzXs="12" nzMd="6">
+        <h2>120+</h2>
+        <p>Verified Trainers</p>
+      </div>
+
+      <div nz-col nzXs="12" nzMd="6">
+        <h2>500+</h2>
+        <p>Training Sessions</p>
+      </div>
+
+      <div nz-col nzXs="12" nzMd="6">
+        <h2>300+</h2>
+        <p>Active Learners</p>
+      </div>
+
+      <div nz-col nzXs="12" nzMd="6">
+        <h2>20+</h2>
+        <p>Training Categories</p>
+      </div>
+
+    </div>
+
+  </nz-card>
+
+  <!-- ================= SERVICES ================= -->
+  <nz-card id="service" class="detail-panel" [nzBordered]="false">
+
+    <div class="detail-copy">
+      <h2>Our Services</h2>
+      <p>
+        We provide a complete training connection ecosystem that helps learners
+        discover, connect, schedule, and grow with verified professional trainers.
+      </p>
+    </div>
+
+    <nz-divider></nz-divider>
+
+    <div nz-row [nzGutter]="24">
+
+      <!-- Service 1 -->
+      <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <nz-card [nzBordered]="true" class="service-card">
+          <span nz-icon nzType="team" class="service-icon"></span>
+          <h3>Trainer Discovery</h3>
+          <p>
+            Search and filter trainers by location, category,
+            experience level, and ratings.
+          </p>
+        </nz-card>
+      </div>
+
+      <!-- Service 2 -->
+      <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <nz-card [nzBordered]="true" class="service-card">
+          <span nz-icon nzType="calendar" class="service-icon"></span>
+          <h3>Online and On-Site Booking</h3>
+          <p>
+            Book training sessions easily for online learning
+            or face-to-face home-based training.
+          </p>
+        </nz-card>
+      </div>
+
+      <!-- Service 3 -->
+      <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <nz-card [nzBordered]="true" class="service-card">
+          <span nz-icon nzType="message" class="service-icon"></span>
+          <h3>Secure Communication</h3>
+          <p>
+            Built-in messaging system for direct communication
+            between learners and trainers.
+          </p>
+        </nz-card>
+      </div>
+
+      <!-- Service 4 -->
+      <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <nz-card [nzBordered]="true" class="service-card">
+          <span nz-icon nzType="star" class="service-icon"></span>
+          <h3>Ratings and Reviews</h3>
+          <p>
+            Review trainers and see feedback from other learners
+            before booking.
+          </p>
+        </nz-card>
+      </div>
+
+      <!-- Service 5 -->
+      <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <nz-card [nzBordered]="true" class="service-card">
+          <span nz-icon nzType="notification" class="service-icon"></span>
+          <h3>Real-Time Notifications</h3>
+          <p>
+            Get instant alerts for booking confirmations,
+            session reminders, and updates.
+          </p>
+        </nz-card>
+      </div>
+
+      <!-- Service 6 -->
+      <div nz-col nzXs="24" nzSm="12" nzMd="8">
+        <nz-card [nzBordered]="true" class="service-card">
+          <span nz-icon nzType="environment" class="service-icon"></span>
+          <h3>Location-Based Matching</h3>
+          <p>
+            Find trainers near your home using smart
+            location-based search technology.
+          </p>
+        </nz-card>
+      </div>
+
+    </div>
+
+  </nz-card>
+
+  <!-- ================= CONTACT ================= -->
+  <nz-card id="contact" class="detail-panel contact-section" [nzBordered]="false">
+
+    <div nz-row [nzGutter]="32">
+
+      <!-- LEFT: CONTACT INFO -->
+      <div nz-col nzXs="24" nzMd="10">
+
+        <h2>Contact Us</h2>
+
+        <p>
+          Have questions or need assistance?
+          Our team is here to help you connect with the right trainer.
+        </p>
+
+        <nz-divider></nz-divider>
+
+        <div class="contact-info">
+
+          <div class="info-item">
+            <span nz-icon nzType="environment"></span>
+            <div>
+              <strong>Location</strong>
+              <p>Addis Ababa, Ethiopia</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span nz-icon nzType="mail"></span>
+            <div>
+              <strong>Email</strong>
+              <p>support@trainingplatform.com</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span nz-icon nzType="phone"></span>
+            <div>
+              <strong>Phone</strong>
+              <p>+251 9XXXXXXXX</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT: CONTACT FORM -->
+      <div nz-col nzXs="24" nzMd="14">
+
+        <form nz-form nzLayout="vertical" [formGroup]="contactForm" (ngSubmit)="submitContact()">
+
+          <nz-form-item>
+            <nz-form-label nzRequired>Name</nz-form-label>
+            <nz-form-control nzErrorTip="Please enter your name">
+              <input nz-input formControlName="name" placeholder="Enter your name" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label nzRequired>Email</nz-form-label>
+            <nz-form-control nzErrorTip="Enter valid email">
+              <input nz-input formControlName="email" placeholder="Enter your email" />
+            </nz-form-control>
+          </nz-form-item>
+
+          <nz-form-item>
+            <nz-form-label nzRequired>Message</nz-form-label>
+            <nz-form-control nzErrorTip="Please enter your message">
+            <textarea nz-input rows="4"
+                      formControlName="message"
+                      placeholder="Write your message here"></textarea>
+            </nz-form-control>
+          </nz-form-item>
+
+          <button nz-button nzType="primary" nzBlock>
+            Send Message
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </nz-card>
+
+  <!-- ================= FOOTER ================= -->
+  <app-site-footer></app-site-footer>
+
+</div>

@@ -1,0 +1,55 @@
+<nz-page-header
+  class="page-header"
+  nzTitle="Connections"
+  nzSubtitle="Send requests and manage your professional graph."
+>
+  <nz-page-header-extra>
+    <form nz-form [formGroup]="form" class="request-form" (ngSubmit)="sendRequest()">
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Receiver ID required">
+          <nz-input-number formControlName="receiverId" [nzMin]="1" nzPlaceHolder="Receiver ID"></nz-input-number>
+        </nz-form-control>
+      </nz-form-item>
+      <button nz-button nzType="primary" [nzLoading]="sending()">Send request</button>
+    </form>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<nz-tabs>
+  <nz-tab nzTitle="Pending">
+    <div class="card-grid">
+      <nz-card
+        class="connection-card"
+        nzBordered="false"
+        *ngFor="let request of pending$ | async; trackBy: trackRequest"
+      >
+        <div class="card-header">
+          <strong>{{ request.sender.name }}</strong>
+          <nz-tag nzColor="gold">Pending</nz-tag>
+        </div>
+        <p>{{ request.sender.email }}</p>
+        <div class="card-actions">
+          <button nz-button nzType="primary" (click)="respond(request.id, true)">Accept</button>
+          <button nz-button nzType="default" (click)="respond(request.id, false)">Reject</button>
+        </div>
+      </nz-card>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="History">
+    <div class="card-grid">
+      <nz-card
+        class="connection-card"
+        nzBordered="false"
+        *ngFor="let request of history$ | async; trackBy: trackRequest"
+      >
+        <div class="card-header">
+          <strong>{{ request.sender.name }} → {{ request.receiver.name }}</strong>
+          <nz-tag [nzColor]="request.status === 'ACCEPTED' ? 'green' : 'red'">
+            {{ request.status }}
+          </nz-tag>
+        </div>
+        <p>{{ request.sender.email }} · {{ request.receiver.email }}</p>
+      </nz-card>
+    </div>
+  </nz-tab>
+</nz-tabs>

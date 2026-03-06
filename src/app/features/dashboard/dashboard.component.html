@@ -1,0 +1,57 @@
+<nz-page-header
+  class="dashboard-hero"
+  nzTitle="Command center"
+  nzSubtitle="Run sessions, manage connections, and keep feedback flowing."
+>
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" routerLink="/trainings">Explore trainings</button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<section class="dashboard-grid">
+  <nz-card class="metric-card" nzBordered="false">
+    <h3>Connections</h3>
+    <p class="metric">Build your professional network.</p>
+    <span class="metric-tag">Requests + history</span>
+  </nz-card>
+  <nz-card class="metric-card" nzBordered="false">
+    <h3>Messages</h3>
+    <p class="metric">Stay in sync with participants.</p>
+    <span class="metric-tag">Direct + secure</span>
+  </nz-card>
+  <nz-card class="metric-card" nzBordered="false">
+    <h3>Reviews</h3>
+    <p class="metric">Collect ratings after each cohort.</p>
+    <span class="metric-tag">1-5 scale</span>
+  </nz-card>
+</section>
+
+<section class="dashboard-section">
+  <div class="section-header">
+    <h2>Latest trainings</h2>
+    <a routerLink="/trainings">View all</a>
+  </div>
+
+  <ng-container *ngIf="latestTrainings$ | async as page">
+    <div class="training-grid">
+      <nz-card
+        class="training-card"
+        *ngFor="let training of page.content; trackBy: trackTraining"
+        nzBordered="false"
+      >
+        <div class="training-meta">
+          <span class="category">{{ training.category?.name || 'General' }}</span>
+          <nz-tag [nzColor]="training.status === 'OPEN' ? 'green' : 'orange'">
+            {{ training.status }}
+          </nz-tag>
+        </div>
+        <h3>{{ training.title }}</h3>
+        <p>{{ training.description }}</p>
+        <div class="training-footer">
+          <span>{{ training.trainer.name }}</span>
+          <a [routerLink]="['/trainings', training.id]">Details</a>
+        </div>
+      </nz-card>
+    </div>
+  </ng-container>
+</section>

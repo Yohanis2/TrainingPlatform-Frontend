@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body: 'IBM Plex Sans', 'Helvetica Neue', sans-serif;
+  --surface: #f6f8fb;
+  --accent: #0f766e;
+  --muted-text: #64748b;
+  --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #0f172a;
+  background: var(--surface);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Space Grotesk', var(--font-body);
+  letter-spacing: -0.5px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ant-layout {
+  background: transparent;
+}

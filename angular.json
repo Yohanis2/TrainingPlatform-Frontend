@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "75a192f3-d32c-434a-a9e3-52346afaa99e"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -27,9 +28,20 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "assets"
               }
             ],
             "styles": [
+              "src/theme.less",
               "src/styles.scss"
             ],
             "server": "src/main.server.ts",
@@ -69,7 +81,8 @@
               "buildTarget": "training-platform-front:build:production"
             },
             "development": {
-              "buildTarget": "training-platform-front:build:development"
+              "buildTarget": "training-platform-front:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

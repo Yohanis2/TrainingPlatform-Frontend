@@ -1,0 +1,30 @@
+<nz-card class="auth-card" [nzBordered]="false">
+  <div class="card-header">
+    <span class="brand-pill"><span nz-icon nzType="user"></span> Professional Access</span>
+    <h2>Welcome back</h2>
+    <p>Sign in with your admin, trainer, or member credentials.</p>
+  </div>
+
+  <form nz-form [formGroup]="form" (ngSubmit)="submit()">
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24">Email</nz-form-label>
+      <nz-form-control [nzSpan]="24" nzErrorTip="Enter a valid email">
+        <input nz-input formControlName="email" placeholder="you@training.com" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+      <nz-form-label [nzSpan]="24">Password</nz-form-label>
+      <nz-form-control [nzSpan]="24" nzErrorTip="Minimum 6 characters">
+        <input nz-input type="password" formControlName="password" placeholder="••••••••" />
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button nzType="primary" nzBlock [nzLoading]="loading()">Sign in</button>
+  </form>
+
+  <div class="card-footer">
+    <span>New to the platform?</span>
+    <a routerLink="/auth/register">Create an account</a>
+  </div>
+</nz-card>

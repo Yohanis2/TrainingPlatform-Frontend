@@ -1,0 +1,93 @@
+.site-footer {
+  margin-top: 24px;
+  border-radius: 20px;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(2, minmax(180px, 1fr));
+  gap: 20px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(14, 165, 233, 0.25), transparent 35%),
+    linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 41, 59, 0.96));
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.24);
+}
+
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mark {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #0f766e, #ea580c);
+}
+
+.footer-brand p {
+  margin: 8px 0 14px;
+  font-size: 0.92rem;
+  color: #cbd5e1;
+  max-width: 500px;
+}
+
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  color: #f8fafc;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.42);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-link:hover {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(148, 163, 184, 0.34);
+}
+
+.footer-nav h4 {
+  margin: 2px 0 12px;
+  font-size: 1rem;
+  color: #f8fafc;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-nav a {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+  color: #67e8f9;
+}
+
+@media (max-width: 960px) {
+  .site-footer {
+    grid-template-columns: 1fr;
+  }
+}

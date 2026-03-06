@@ -1,0 +1,25 @@
+<nz-page-header
+  class="page-header"
+  nzTitle="Notifications"
+  nzSubtitle="Stay on top of messages, enrollments, and reviews."
+></nz-page-header>
+
+<div class="notification-grid">
+  <nz-card
+    class="notification-card"
+    nzBordered="false"
+    *ngFor="let notification of notifications$ | async; trackBy: trackNotification"
+  >
+    <div class="card-header">
+      <strong>{{ notification.title }}</strong>
+      <nz-tag [nzColor]="notification.read ? 'default' : 'blue'">
+        {{ notification.read ? 'Read' : 'New' }}
+      </nz-tag>
+    </div>
+    <p>{{ notification.body }}</p>
+    <div class="card-footer">
+      <span>{{ notification.createdAt | date: 'short' }}</span>
+      <button nz-button nzType="link" (click)="markRead(notification.id)">Mark read</button>
+    </div>
+  </nz-card>
+</div>

@@ -1,0 +1,36 @@
+<nz-page-header
+  class="page-header"
+  nzTitle="Admin users"
+  nzSubtitle="Promote trainers and manage roles in one place."
+></nz-page-header>
+
+<nz-table
+  #table
+  [nzData]="(users$ | async) ?? []"
+  [nzShowPagination]="false"
+  nzBordered
+  class="admin-table"
+>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of table.data; trackBy: trackUser">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>
+        <nz-select
+          [ngModel]="user.role"
+          (ngModelChange)="updateRole(user, $event)"
+          [nzLoading]="updating() === user.id"
+        >
+          <nz-option *ngFor="let role of roles" [nzValue]="role" [nzLabel]="role"></nz-option>
+        </nz-select>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,73 @@
+<nz-page-header class="page-header" nzTitle="Training catalog" nzSubtitle="Filter by category, level, and availability.">
+  <nz-page-header-extra>
+    <button nz-button nzType="primary" routerLink="/trainings/create">Create training</button>
+  </nz-page-header-extra>
+</nz-page-header>
+
+<form class="filters" nz-form [formGroup]="form">
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input formControlName="title" placeholder="Search by title" />
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-select formControlName="categoryId" nzPlaceHolder="Category">
+        <nz-option
+          *ngFor="let category of categories$ | async; trackBy: trackCategory"
+          [nzValue]="category.id"
+          [nzLabel]="category.name"
+        ></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-select formControlName="level" nzPlaceHolder="Level">
+        <nz-option *ngFor="let level of levels" [nzValue]="level" [nzLabel]="level"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control>
+      <nz-select formControlName="status" nzPlaceHolder="Status">
+        <nz-option *ngFor="let status of statuses" [nzValue]="status" [nzLabel]="status"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <div class="filter-actions">
+    <button nz-button nzType="primary" type="button" (click)="applyFilters()">Apply</button>
+    <button nz-button nzType="default" type="button" (click)="resetFilters()">Reset</button>
+  </div>
+</form>
+
+<ng-container *ngIf="trainings$ | async as page">
+  <div class="training-grid">
+    <nz-card
+      class="training-card"
+      nzBordered="false"
+      *ngFor="let training of page.content; trackBy: trackTraining"
+      [routerLink]="['/trainings', training.id]"
+    >
+      <div class="training-head">
+        <span class="category">{{ training.category?.name || 'General' }}</span>
+        <nz-tag [nzColor]="training.status === 'OPEN' ? 'green' : 'orange'">{{ training.status }}</nz-tag>
+      </div>
+      <h3>{{ training.title }}</h3>
+      <p>{{ training.description }}</p>
+      <div class="training-footer">
+        <span>{{ training.level }}</span>
+        <span>{{ training.enrolledCount }}/{{ training.capacity }}</span>
+      </div>
+    </nz-card>
+  </div>
+
+  <div class="pagination">
+    <nz-pagination
+      [nzPageIndex]="pageIndex()"
+      [nzTotal]="page.totalElements"
+      [nzPageSize]="pageSize()"
+      (nzPageIndexChange)="changePage($event)"
+    ></nz-pagination>
+  </div>
+</ng-container>

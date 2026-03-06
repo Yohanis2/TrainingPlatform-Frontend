@@ -1,0 +1,37 @@
+.page-header {
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-family: var(--font-display);
+  margin-bottom: 4px;
+}
+
+.page-header p {
+  margin: 0;
+  color: var(--muted-text);
+}
+
+.training-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.training-card {
+  border-radius: 16px;
+}
+
+.training-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.category {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #475569;
+}

@@ -1,0 +1,20 @@
+<nz-page-header
+  class="page-header"
+  [nzTitle]="mode === 'created' ? 'Created trainings' : 'Enrolled trainings'"
+  nzSubtitle="Keep track of your professional learning pipeline."
+></nz-page-header>
+
+<div class="training-grid">
+  <nz-card
+    class="training-card"
+    nzBordered="false"
+    *ngFor="let training of trainings$ | async; trackBy: trackTraining"
+  >
+    <div class="training-head">
+      <span class="category">{{ training.category?.name || 'General' }}</span>
+      <nz-tag [nzColor]="training.status === 'OPEN' ? 'green' : 'orange'">{{ training.status }}</nz-tag>
+    </div>
+    <h3>{{ training.title }}</h3>
+    <p>{{ training.description }}</p>
+  </nz-card>
+</div>

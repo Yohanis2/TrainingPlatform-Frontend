@@ -1,0 +1,50 @@
+<svg width="900" height="700" viewBox="0 0 900 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="700" rx="32" fill="url(#bg)"/>
+  <circle cx="152" cy="120" r="70" fill="#FDE68A" fill-opacity="0.65"/>
+  <circle cx="764" cy="94" r="56" fill="#99F6E4" fill-opacity="0.75"/>
+
+  <rect x="70" y="122" width="420" height="260" rx="24" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="3"/>
+  <rect x="94" y="146" width="372" height="26" rx="13" fill="#D1FAE5"/>
+  <rect x="98" y="197" width="120" height="26" rx="13" fill="#E2E8F0"/>
+  <rect x="234" y="197" width="106" height="26" rx="13" fill="#E2E8F0"/>
+  <rect x="354" y="197" width="92" height="26" rx="13" fill="#E2E8F0"/>
+
+  <g opacity="0.96">
+    <path d="M167 308L230 246L292 284L352 236L420 288" stroke="#14B8A6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="167" cy="308" r="12" fill="#0F766E"/>
+    <circle cx="230" cy="246" r="12" fill="#0F766E"/>
+    <circle cx="292" cy="284" r="12" fill="#0F766E"/>
+    <circle cx="352" cy="236" r="12" fill="#0F766E"/>
+    <circle cx="420" cy="288" r="12" fill="#0F766E"/>
+  </g>
+
+  <g>
+    <rect x="498" y="84" width="324" height="476" rx="28" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="3"/>
+    <rect x="530" y="118" width="260" height="208" rx="22" fill="#ECFEFF"/>
+
+    <circle cx="594" cy="194" r="20" fill="#0EA5E9"/>
+    <circle cx="690" cy="246" r="20" fill="#0EA5E9"/>
+    <circle cx="736" cy="176" r="20" fill="#0EA5E9"/>
+    <circle cx="638" cy="287" r="20" fill="#0EA5E9"/>
+
+    <path d="M594 194L690 246L736 176L638 287" stroke="#0284C7" stroke-width="6" stroke-linecap="round"/>
+
+    <rect x="530" y="354" width="260" height="168" rx="20" fill="#F8FAFC"/>
+    <circle cx="586" cy="408" r="32" fill="#0F766E"/>
+    <rect x="628" y="388" width="136" height="15" rx="7.5" fill="#94A3B8"/>
+    <rect x="628" y="414" width="118" height="15" rx="7.5" fill="#CBD5E1"/>
+    <rect x="628" y="440" width="84" height="15" rx="7.5" fill="#CBD5E1"/>
+  </g>
+
+  <rect x="130" y="446" width="300" height="118" rx="20" fill="#0F766E" fill-opacity="0.94"/>
+  <text x="168" y="500" fill="white" font-size="30" font-family="Arial, sans-serif" font-weight="700">Door-to-Door</text>
+  <text x="168" y="538" fill="#CCFBF1" font-size="24" font-family="Arial, sans-serif" font-weight="600">Training Available</text>
+
+  <defs>
+    <linearGradient id="bg" x1="46" y1="48" x2="900" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F0F9FF"/>
+      <stop offset="0.58" stop-color="#ECFEFF"/>
+      <stop offset="1" stop-color="#F8FAFC"/>
+    </linearGradient>
+  </defs>
+</svg>
